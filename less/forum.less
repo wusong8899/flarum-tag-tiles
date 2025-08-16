@@ -203,6 +203,134 @@
   }
 }
 
+/* Splide Navigation Arrows Styling */
+.tagSplide .splide__arrows {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.tagSplide .splide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.tagSplide .splide__arrow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tagSplide .splide__arrow:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.tagSplide .splide__arrow:hover::before {
+  opacity: 1;
+}
+
+.tagSplide .splide__arrow:active {
+  transform: translateY(-50%) scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tagSplide .splide__arrow--prev {
+  left: -22px;
+}
+
+.tagSplide .splide__arrow--next {
+  right: -22px;
+}
+
+.tagSplide .splide__arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+  transition: fill 0.3s ease;
+}
+
+.tagSplide .splide__arrow:hover svg {
+  fill: #000;
+}
+
+.tagSplide .splide__arrow--prev svg {
+  transform: rotate(180deg);
+}
+
+/* Pulse animation for initial hint */
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.2),
+      0 3px 6px rgba(59, 130, 246, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Arrow visibility on hover */
+.tagSplide .splide__arrows {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tagSplide:hover .splide__arrows {
+  opacity: 1;
+}
+
+/* Initial pulse hint - shows for first few seconds */
+.tagSplide .splide__arrow {
+  animation: arrowPulse 2s ease-in-out 3;
+  animation-delay: 1s;
+}
+
+.tagSplide:hover .splide__arrow {
+  animation: none;
+}
+
 /* Additional mobile fixes */
 @media (max-width: 480px) {
   .splide__slide-tag {
@@ -212,5 +340,30 @@
 
   .splide__slide-tag-inner {
     min-height: 120px; /* Increased from 90px to 120px */
+  }
+
+  /* Mobile arrow adjustments */
+  .tagSplide .splide__arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .tagSplide .splide__arrow--prev {
+    left: -18px;
+  }
+
+  .tagSplide .splide__arrow--next {
+    right: -18px;
+  }
+
+  .tagSplide .splide__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Always show arrows on mobile */
+  .tagSplide .splide__arrows {
+    opacity: 1;
   }
 }
