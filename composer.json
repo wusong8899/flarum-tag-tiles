@@ -1,0 +1,39 @@
+{
+  "name": "wusong8899/flarum-tag-tiles",
+  "description": "Convert tag tiles to swiper-based layout with social media integration",
+  "keywords": [
+    "flarum",
+    "tags",
+    "tiles",
+    "swiper",
+    "social-media"
+  ],
+  "type": "flarum-extension",
+  "license": "MIT",
+  "require": {
+    "flarum/core": "^1.0",
+    "flarum/tags": "*"
+  },
+  "authors": [
+    {
+      "name": "wusong8899",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "wusong8899\\FlarumTagTiles\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Tag Tiles Swiper",
+      "category": "feature",
+      "icon": {
+        "name": "fas fa-th-large",
+        "backgroundColor": "#2196F3",
+        "color": "white"
+      }
+    }
+  }
+}
