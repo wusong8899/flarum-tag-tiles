@@ -115,14 +115,12 @@ export class TagTilesManager {
      * Create tag swiper element
      */
     private createTagSwiper(container: HTMLElement): HTMLElement {
-        const textContainer = container.querySelector('.TagTextOuterContainer');
         const swiper = DOMUtils.createElement('div', {
             className: 'swiper tagSwiper'
         });
 
-        if (textContainer) {
-            DOMUtils.appendChild(textContainer, swiper);
-        }
+        // Append swiper directly to the main container, not inside text container
+        DOMUtils.appendChild(container, swiper);
 
         return swiper;
     }
@@ -486,8 +484,16 @@ export class TagTilesManager {
                 // Adjust freeMode logic - disable freeMode when autoplay is enabled for better compatibility
                 const shouldEnableFreeMode = advancedConfig.enableFreeMode && !shouldEnableAutoplay;
 
+                // Configure slides per view based on device
+                const isMobile = isMobileDevice();
+                const MOBILE_SLIDES_PER_VIEW = 3.5;
+                let slidesPerView: number | 'auto' = 'auto';
+                if (isMobile) {
+                    slidesPerView = MOBILE_SLIDES_PER_VIEW;
+                }
+
                 const swiperInstance = new Swiper('.tagSwiper', {
-                    slidesPerView: 'auto',
+                    slidesPerView: slidesPerView,
                     spaceBetween: advancedConfig.spaceBetween,
                     freeMode: shouldEnableFreeMode,
                     loop: shouldEnableLoop,
@@ -502,6 +508,10 @@ export class TagTilesManager {
                 // Store swiper instance for potential cleanup
                 if (swiperInstance) {
                     // Swiper initialized successfully
+                    // Debug: Log swiper initialization
+                    if (process.env.NODE_ENV === 'development') {
+                        // Development logging would go here
+                    }
                 }
             } catch {
                 // Silently handle Swiper initialization errors
