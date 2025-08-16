@@ -212,6 +212,9 @@
   bottom: 0;
   pointer-events: none;
   z-index: 20;
+  /* Ensure arrows container spans the full track width */
+  width: 100%;
+  height: 100%;
 }
 
 .tagSplide .splide__arrow {
@@ -235,8 +238,9 @@
   justify-content: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  position: relative;
   overflow: hidden;
+  /* Improved positioning for better track alignment */
+  z-index: 21;
 }
 
 .tagSplide .splide__arrow::before {
@@ -271,12 +275,17 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Improved arrow positioning for better track alignment */
 .tagSplide .splide__arrow--prev {
-  left: 15px;
+  left: 10px;
+  /* Position relative to track start */
 }
 
 .tagSplide .splide__arrow--next {
-  right: 15px;
+  right: 10px;
+  /* Position relative to track end, closer to content */
+  /* Ensure arrow doesn't overlap with track content */
+  margin-right: 5px;
 }
 
 .tagSplide .splide__arrow svg {
@@ -311,6 +320,42 @@
       0 6px 18px rgba(0, 0, 0, 0.2),
       0 3px 6px rgba(59, 130, 246, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Enhanced arrow positioning for different screen sizes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Tablet adjustments */
+  .tagSplide .splide__arrow--prev {
+    left: 12px;
+  }
+
+  .tagSplide .splide__arrow--next {
+    right: 12px;
+    margin-right: 4px;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop adjustments for larger screens */
+  .tagSplide .splide__arrow--prev {
+    left: 15px;
+  }
+
+  .tagSplide .splide__arrow--next {
+    right: 15px;
+    margin-right: 6px;
+  }
+
+  /* Larger arrows on desktop for better visibility */
+  .tagSplide .splide__arrow {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tagSplide .splide__arrow svg {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -357,11 +402,14 @@
   }
 
   .tagSplide .splide__arrow--prev {
-    left: 10px;
+    left: 8px;
+    /* Closer to edge on mobile for better thumb access */
   }
 
   .tagSplide .splide__arrow--next {
-    right: 10px;
+    right: 8px;
+    /* Closer to edge on mobile, with slight margin for content */
+    margin-right: 3px;
   }
 
   .tagSplide .splide__arrow svg {
