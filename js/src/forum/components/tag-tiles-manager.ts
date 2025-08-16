@@ -8,12 +8,12 @@ import { getAdvancedSplideConfig } from '../utils/config-reader';
 import type { TagData } from '../../common/config/types';
 
 /**
- * Tag Tiles Manager for converting TagTiles to swiper layout
+ * Tag Tiles Manager for converting TagTiles to splide layout
  */
 export class TagTilesManager {
 
     /**
-     * Change category layout to swiper-based layout
+     * Change category layout to splide-based layout
      */
     changeCategoryLayout(): void {
         try {
@@ -128,16 +128,17 @@ export class TagTilesManager {
      * Create tag splide wrapper
      */
     private createTagSplideWrapper(splide: HTMLElement): HTMLElement {
-        const track = DOMUtils.createElement('div', {
-            className: 'splide__track'
-        });
-        DOMUtils.appendChild(splide, track);
-
-        const wrapper = DOMUtils.createElement('ul', {
+        const wrapper = DOMUtils.createElement('div', {
             className: 'splide__list',
             id: defaultConfig.ui.tagWrapperId
         });
+
+        const track = DOMUtils.createElement('div', {
+            className: 'splide__track'
+        });
+
         DOMUtils.appendChild(track, wrapper);
+        DOMUtils.appendChild(splide, track);
         return wrapper;
     }
 
@@ -279,7 +280,7 @@ export class TagTilesManager {
      * Create individual tag slide
      */
     private createTagSlide(tagData: TagData, isMobile: boolean): HTMLElement {
-        const slide = DOMUtils.createElement('li', {
+        const slide = DOMUtils.createElement('div', {
             className: 'splide__slide splide__slide-tag'
         });
 
@@ -469,32 +470,26 @@ export class TagTilesManager {
 
                 // Determine if we should enable loop mode
                 const shouldEnableLoop = advancedConfig.enableLoopMode && hasEnoughSlides;
+                let slideType = 'slide';
+                if (shouldEnableLoop) {
+                    slideType = 'loop';
+                }
 
                 // Configure autoplay - Enable autoplay if we have at least 2 slides and autoplay is enabled
-                let autoplayConfig: object | false = false;
+                let autoplayConfig: boolean | object = false;
                 const shouldEnableAutoplay = advancedConfig.enableAutoplay && slides.length >= ADVANCED_SPLIDE_CONFIG.MIN_SLIDES_FOR_AUTOPLAY;
 
                 if (shouldEnableAutoplay) {
-                    autoplayConfig = {
-                        interval: advancedConfig.autoplayInterval,
-                        pauseOnHover: advancedConfig.pauseOnMouseEnter,
-                        pauseOnFocus: true,
-                        rewind: false,
-                    };
+                    autoplayConfig = true;
                 }
 
                 // Configure slides per view based on device
                 const isMobile = isMobileDevice();
-                const MOBILE_PER_PAGE = 3;
-                let perPageValue = 'auto';
+                const MOBILE_SLIDES_PER_PAGE = 4;
+                const DESKTOP_SLIDES_PER_PAGE = 7;
+                let perPageValue = DESKTOP_SLIDES_PER_PAGE;
                 if (isMobile) {
-                    perPageValue = MOBILE_PER_PAGE;
-                }
-
-                // Determine slide type
-                let slideType: 'slide' | 'loop' = 'slide';
-                if (shouldEnableLoop) {
-                    slideType = 'loop';
+                    perPageValue = MOBILE_SLIDES_PER_PAGE;
                 }
 
                 const splideInstance = new Splide('.tagSplide', {
