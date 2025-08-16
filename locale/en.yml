@@ -4,18 +4,23 @@ wusong8899-tag-tiles:
     SocialKickUrl: Kick URL
     SocialKickUrlHelp: Enter the URL for your Kick channel (leave empty to hide this button)
     SocialKickIcon: Kick Icon URL
+    SocialKickIconHelp: Enter the URL for the Kick icon image (leave empty to use default icon)
     SocialFacebookUrl: Facebook URL
     SocialFacebookUrlHelp: Enter the URL for your Facebook page (leave empty to hide this button)
     SocialFacebookIcon: Facebook Icon URL
+    SocialFacebookIconHelp: Enter the URL for the Facebook icon image (leave empty to use default icon)
     SocialTwitterUrl: Twitter URL
     SocialTwitterUrlHelp: Enter the URL for your Twitter profile (leave empty to hide this button)
     SocialTwitterIcon: Twitter Icon URL
+    SocialTwitterIconHelp: Enter the URL for the Twitter icon image (leave empty to use default icon)
     SocialYouTubeUrl: YouTube URL
     SocialYouTubeUrlHelp: Enter the URL for your YouTube channel (leave empty to hide this button)
     SocialYouTubeIcon: YouTube Icon URL
+    SocialYouTubeIconHelp: Enter the URL for the YouTube icon image (leave empty to use default icon)
     SocialInstagramUrl: Instagram URL
     SocialInstagramUrlHelp: Enter the URL for your Instagram profile (leave empty to hide this button)
     SocialInstagramIcon: Instagram Icon URL
+    SocialInstagramIconHelp: Enter the URL for the Instagram icon image (leave empty to use default icon)
     SocialIconHelp: Enter the URL for the icon image (leave empty to use default icon)
   forum:
     loading: Loading...
