@@ -8,12 +8,12 @@ import { getAdvancedSplideConfig } from '../utils/config-reader';
 import type { TagData } from '../../common/config/types';
 
 /**
- * Tag Tiles Manager for converting TagTiles to splide layout
+ * Tag Tiles Manager for converting TagTiles to swiper layout
  */
 export class TagTilesManager {
 
     /**
-     * Change category layout to splide-based layout
+     * Change category layout to swiper-based layout
      */
     changeCategoryLayout(): void {
         try {
@@ -74,12 +74,12 @@ export class TagTilesManager {
                 return;
             }
 
-            const list = this.createTagSplideList(splide);
-            if (!list) {
+            const wrapper = this.createTagSplideWrapper(splide);
+            if (!wrapper) {
                 return;
             }
 
-            this.populateTagSlides(list, tagTiles);
+            this.populateTagSlides(wrapper, tagTiles);
             this.appendTagContainer(container);
             this.addTagSplideContent(container);
             this.removeOriginalTagTiles();
@@ -125,27 +125,26 @@ export class TagTilesManager {
     }
 
     /**
-     * Create tag splide track and list
+     * Create tag splide wrapper
      */
-    private createTagSplideList(splide: HTMLElement): HTMLElement {
+    private createTagSplideWrapper(splide: HTMLElement): HTMLElement {
         const track = DOMUtils.createElement('div', {
             className: 'splide__track'
         });
+        DOMUtils.appendChild(splide, track);
 
-        const list = DOMUtils.createElement('ul', {
+        const wrapper = DOMUtils.createElement('ul', {
             className: 'splide__list',
             id: defaultConfig.ui.tagWrapperId
         });
-
-        DOMUtils.appendChild(track, list);
-        DOMUtils.appendChild(splide, track);
-        return list;
+        DOMUtils.appendChild(track, wrapper);
+        return wrapper;
     }
 
     /**
-     * Populate tag slides in the splide list
+     * Populate tag slides
      */
-    private populateTagSlides(list: HTMLElement, tagTiles: NodeListOf<Element>): void {
+    private populateTagSlides(wrapper: HTMLElement, tagTiles: NodeListOf<Element>): void {
         const isMobile = isMobileDevice();
 
         for (const tag of tagTiles) {
@@ -154,7 +153,7 @@ export class TagTilesManager {
 
             if (tagData) {
                 const slide = this.createTagSlide(tagData, isMobile);
-                DOMUtils.appendChild(list, slide);
+                DOMUtils.appendChild(wrapper, slide);
             }
         }
     }
@@ -479,40 +478,30 @@ export class TagTilesManager {
                     autoplayConfig = {
                         interval: advancedConfig.autoplayInterval,
                         pauseOnHover: advancedConfig.pauseOnMouseEnter,
+                        pauseOnFocus: true,
+                        rewind: false,
                     };
                 }
 
-                // Note: Splide.js doesn't have freeMode like Swiper.js, so we skip this configuration
-
                 // Configure slides per view based on device
                 const isMobile = isMobileDevice();
-                const MOBILE_PER_PAGE = 3.5;
-                const DEFAULT_PER_PAGE = 1;
-                let perPageValue = DEFAULT_PER_PAGE;
+                const MOBILE_PER_PAGE = 3;
+                let perPageValue = 'auto';
                 if (isMobile) {
                     perPageValue = MOBILE_PER_PAGE;
                 }
 
                 // Determine slide type
-                let slideType: 'loop' | 'slide' = 'slide';
+                let slideType: 'slide' | 'loop' = 'slide';
                 if (shouldEnableLoop) {
                     slideType = 'loop';
-                }
-
-                // Configure autoplay
-                let autoplaySettings: { interval: number; pauseOnHover: boolean } | false = false;
-                if (autoplayConfig) {
-                    autoplaySettings = {
-                        interval: advancedConfig.autoplayInterval,
-                        pauseOnHover: advancedConfig.pauseOnMouseEnter
-                    };
                 }
 
                 const splideInstance = new Splide('.tagSplide', {
                     perPage: perPageValue,
                     gap: advancedConfig.gap,
                     type: slideType,
-                    autoplay: autoplaySettings,
+                    autoplay: autoplayConfig,
                     speed: advancedConfig.transitionSpeed,
                     drag: advancedConfig.enableGrabCursor,
                     focus: ARRAY_CONSTANTS.EMPTY_LENGTH, // Start from the first slide
