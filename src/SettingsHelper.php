@@ -22,14 +22,14 @@ class SettingsHelper
         foreach ($socialPlatforms as $platform) {
             // URL setting
             $settings[] = (new Extend\Settings())->serializeToForum(
-                "wusong8899-flarum-tag-tiles.Social{$platform}Url",
-                "wusong8899-flarum-tag-tiles.Social{$platform}Url"
+                "wusong8899-tag-tiles.Social{$platform}Url",
+                "wusong8899-tag-tiles.Social{$platform}Url"
             );
 
             // Icon setting
             $settings[] = (new Extend\Settings())->serializeToForum(
-                "wusong8899-flarum-tag-tiles.Social{$platform}Icon",
-                "wusong8899-flarum-tag-tiles.Social{$platform}Icon"
+                "wusong8899-tag-tiles.Social{$platform}Icon",
+                "wusong8899-tag-tiles.Social{$platform}Icon"
             );
         }
 

@@ -83,7 +83,7 @@ export const CSS_SELECTORS = {
 
 // Extension configuration constants
 export const EXTENSION_CONFIG = {
-  ID: 'wusong8899-flarum-tag-tiles',
+  ID: 'wusong8899-tag-tiles',
   TRANSLATION_PREFIX: 'wusong8899-tag-tiles',
 } as const;
 

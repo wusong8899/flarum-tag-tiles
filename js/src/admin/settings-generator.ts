@@ -52,7 +52,7 @@ export class SettingsGenerator {
  * Configuration constants
  */
 export const EXTENSION_CONFIG = {
-    EXTENSION_ID: 'wusong8899-flarum-tag-tiles',
+    EXTENSION_ID: 'wusong8899-tag-tiles',
 };
 
 /**
