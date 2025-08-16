@@ -36,7 +36,7 @@ app.initializers.add(defaultConfig.app.extensionId, () => {
 
     extend(TagsPage.prototype, 'onupdate', function tagsPageOnUpdateExtension(_vnode: unknown) {
         errorHandler.handleSync(() => {
-            // Check if swiper container doesn't exist and create it
+            // Check if splide container doesn't exist and create it
             if (!document.getElementById(defaultConfig.ui.tagContainerId)) {
                 const DOM_READY_DELAY = 100;
                 setTimeout(() => {

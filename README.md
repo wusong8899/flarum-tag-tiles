@@ -1,17 +1,17 @@
-# Flarum Tag Tiles Swiper
+# Flarum Tag Tiles Splide
 
-A Flarum extension that converts the default tag tiles layout into a modern swiper-based carousel with social media integration.
+A Flarum extension that converts the default tag tiles layout into a modern splide-based carousel with social media integration.
 
 ## Features
 
-- **Tag Tiles Conversion**: Transforms standard tag tiles into an interactive swiper carousel
-- **Advanced Swiper Configuration**: Full control over autoplay, loop mode, transition speed, and more
+- **Tag Tiles Conversion**: Transforms standard tag tiles into an interactive splide carousel
+- **Advanced Splide Configuration**: Full control over autoplay, loop mode, transition speed, and more
 - **Background Image Support**: Integrates with flarum-tag-background extension for custom tag backgrounds
 - **Social Media Integration**: Displays configurable social media buttons (Kick, Facebook, Twitter, YouTube, Instagram)
 - **Mobile Responsive**: Optimized layout for mobile devices
 - **Independent Operation**: Works standalone without dependencies on other custom extensions
 
-### Advanced Swiper Features
+### Advanced Splide Features
 
 - **Autoplay Control**: Enable/disable automatic slide progression with customizable delay
 - **Loop Mode**: Infinite loop for continuous sliding experience
@@ -30,7 +30,7 @@ composer require wusong8899/flarum-tag-tiles
 
 1. Enable the extension in your Flarum admin panel
 2. Configure social media links and icons in the extension settings
-3. Adjust advanced swiper settings:
+3. Adjust advanced splide settings:
    - **Autoplay Settings**: Enable autoplay and set delay between slides
    - **Loop Mode**: Enable infinite loop for continuous sliding
    - **Transition Effects**: Customize transition speed and spacing

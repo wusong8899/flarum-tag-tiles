@@ -23,25 +23,25 @@ wusong8899-tag-tiles:
     SocialInstagramIconHelp: Enter the URL for the Instagram icon image (leave empty to use default icon)
     SocialIconHelp: Enter the URL for the icon image (leave empty to use default icon)
 
-    # Advanced Swiper Settings
-    AdvancedSwiperMinSlidesForLoop: Minimum Slides for Loop Mode
-    AdvancedSwiperMinSlidesForLoopHelp: "Minimum number of slides required to enable loop mode (default: 3)"
-    AdvancedSwiperEnableAutoplay: Enable Autoplay
-    AdvancedSwiperEnableAutoplayHelp: Enable automatic slide progression
-    AdvancedSwiperAutoplayDelay: Autoplay Delay (ms)
-    AdvancedSwiperAutoplayDelayHelp: "Time between slide transitions in milliseconds (default: 3000)"
-    AdvancedSwiperEnableLoopMode: Enable Loop Mode
-    AdvancedSwiperEnableLoopModeHelp: Enable infinite loop mode for continuous sliding
-    AdvancedSwiperTransitionSpeed: Transition Speed (ms)
-    AdvancedSwiperTransitionSpeedHelp: "Duration of slide transition animation in milliseconds (default: 800)"
-    AdvancedSwiperSpaceBetween: Space Between Slides
-    AdvancedSwiperSpaceBetweenHelp: "Space between slides in pixels (default: 10)"
-    AdvancedSwiperPauseOnMouseEnter: Pause on Mouse Hover
-    AdvancedSwiperPauseOnMouseEnterHelp: Pause autoplay when mouse hovers over the swiper
-    AdvancedSwiperEnableGrabCursor: Enable Grab Cursor
-    AdvancedSwiperEnableGrabCursorHelp: Show grab cursor when hovering over slides
-    AdvancedSwiperEnableFreeMode: Enable Free Mode
-    AdvancedSwiperEnableFreeModeHelp: Allow free sliding without snapping to slides
+    # Advanced Splide Settings
+    AdvancedSplideMinSlidesForLoop: Minimum Slides for Loop Mode
+    AdvancedSplideMinSlidesForLoopHelp: "Minimum number of slides required to enable loop mode (default: 2)"
+    AdvancedSplideEnableAutoplay: Enable Autoplay
+    AdvancedSplideEnableAutoplayHelp: Enable automatic slide progression
+    AdvancedSplideAutoplayInterval: Autoplay Interval (ms)
+    AdvancedSplideAutoplayIntervalHelp: "Time between slide transitions in milliseconds (default: 3000)"
+    AdvancedSplideEnableLoopMode: Enable Loop Mode
+    AdvancedSplideEnableLoopModeHelp: Enable infinite loop mode for continuous sliding
+    AdvancedSplideTransitionSpeed: Transition Speed (ms)
+    AdvancedSplideTransitionSpeedHelp: "Duration of slide transition animation in milliseconds (default: 800)"
+    AdvancedSplideGap: Gap Between Slides
+    AdvancedSplideGapHelp: "Gap between slides (default: 10px)"
+    AdvancedSplidePauseOnMouseEnter: Pause on Mouse Hover
+    AdvancedSplidePauseOnMouseEnterHelp: Pause autoplay when mouse hovers over the splide
+    AdvancedSplideEnableGrabCursor: Enable Grab Cursor
+    AdvancedSplideEnableGrabCursorHelp: Show grab cursor when hovering over slides
+    AdvancedSplideEnableFreeMode: Enable Free Mode
+    AdvancedSplideEnableFreeModeHelp: Allow free sliding without snapping to slides
   forum:
     loading: Loading...
     error: An error occurred

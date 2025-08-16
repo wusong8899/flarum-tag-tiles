@@ -5,30 +5,30 @@ export interface AppConfig {
   translationPrefix: string;
 }
 
-export interface SwiperConfig {
-  spaceBetween: number;
-  slidesPerView: number;
+export interface SplideConfig {
+  gap: string;
+  perPage: number;
 }
 
-export interface AdvancedSwiperConfig {
+export interface AdvancedSplideConfig {
   minSlidesForLoop: number;
   enableAutoplay: boolean;
-  autoplayDelay: number;
+  autoplayInterval: number;
   enableLoopMode: boolean;
   transitionSpeed: number;
-  spaceBetween: number;
+  gap: string;
   pauseOnMouseEnter: boolean;
   enableGrabCursor: boolean;
   enableFreeMode: boolean;
 }
 
 export interface TagTilesConfig {
-  autoplayDelay: number;
+  autoplayInterval: number;
   checkInterval: number;
   dataCheckInterval: number;
-  mobile: SwiperConfig;
-  desktop: SwiperConfig;
-  advanced: AdvancedSwiperConfig;
+  mobile: SplideConfig;
+  desktop: SplideConfig;
+  advanced: AdvancedSplideConfig;
 }
 
 export interface UIConfig {
@@ -65,8 +65,8 @@ export interface ValidationResult {
 }
 
 export interface MobileConfig {
-  spaceBetween: number;
-  slidesPerView: number;
+  gap: string;
+  perPage: number;
 }
 
 export type EventType = 'touchend' | 'click';
@@ -107,9 +107,10 @@ export interface StylesObject {
   [property: string]: string | number;
 }
 
-// Swiper-related types
-export interface SwiperInstance {
-  destroy: (deleteInstance?: boolean, cleanStyles?: boolean) => void;
+// Splide-related types
+export interface SplideInstance {
+  destroy: () => void;
+  mount: () => void;
   [key: string]: unknown;
 }
 

@@ -23,24 +23,24 @@ wusong8899-tag-tiles:
     SocialIconHelp: 输入图标图片的链接（留空则使用默认图标）
 
     # 高级轮播配置
-    AdvancedSwiperMinSlidesForLoop: 循环模式最小幻灯片数
-    AdvancedSwiperMinSlidesForLoopHelp: "启用循环模式所需的最小幻灯片数量（默认：3）"
-    AdvancedSwiperEnableAutoplay: 启用自动播放
-    AdvancedSwiperEnableAutoplayHelp: 启用自动幻灯片切换
-    AdvancedSwiperAutoplayDelay: 自动播放延迟（毫秒）
-    AdvancedSwiperAutoplayDelayHelp: "幻灯片切换间隔时间，单位毫秒（默认：3000）"
-    AdvancedSwiperEnableLoopMode: 启用循环模式
-    AdvancedSwiperEnableLoopModeHelp: 启用无限循环模式，实现连续滑动
-    AdvancedSwiperTransitionSpeed: 过渡速度（毫秒）
-    AdvancedSwiperTransitionSpeedHelp: "幻灯片过渡动画持续时间，单位毫秒（默认：800）"
-    AdvancedSwiperSpaceBetween: 幻灯片间距
-    AdvancedSwiperSpaceBetweenHelp: "幻灯片之间的间距，单位像素（默认：10）"
-    AdvancedSwiperPauseOnMouseEnter: 鼠标悬停时暂停
-    AdvancedSwiperPauseOnMouseEnterHelp: 当鼠标悬停在轮播器上时暂停自动播放
-    AdvancedSwiperEnableGrabCursor: 启用抓取光标
-    AdvancedSwiperEnableGrabCursorHelp: 悬停在幻灯片上时显示抓取光标
-    AdvancedSwiperEnableFreeMode: 启用自由模式
-    AdvancedSwiperEnableFreeModeHelp: 允许自由滑动，不会自动对齐到幻灯片
+    AdvancedSplideMinSlidesForLoop: 循环模式最小幻灯片数
+    AdvancedSplideMinSlidesForLoopHelp: "启用循环模式所需的最小幻灯片数量（默认：2）"
+    AdvancedSplideEnableAutoplay: 启用自动播放
+    AdvancedSplideEnableAutoplayHelp: 启用自动幻灯片切换
+    AdvancedSplideAutoplayInterval: 自动播放间隔（毫秒）
+    AdvancedSplideAutoplayIntervalHelp: "幻灯片切换间隔时间，单位毫秒（默认：3000）"
+    AdvancedSplideEnableLoopMode: 启用循环模式
+    AdvancedSplideEnableLoopModeHelp: 启用无限循环模式，实现连续滑动
+    AdvancedSplideTransitionSpeed: 过渡速度（毫秒）
+    AdvancedSplideTransitionSpeedHelp: "幻灯片过渡动画持续时间，单位毫秒（默认：800）"
+    AdvancedSplideGap: 幻灯片间距
+    AdvancedSplideGapHelp: "幻灯片之间的间距（默认：10px）"
+    AdvancedSplidePauseOnMouseEnter: 鼠标悬停时暂停
+    AdvancedSplidePauseOnMouseEnterHelp: 当鼠标悬停在轮播器上时暂停自动播放
+    AdvancedSplideEnableGrabCursor: 启用抓取光标
+    AdvancedSplideEnableGrabCursorHelp: 悬停在幻灯片上时显示抓取光标
+    AdvancedSplideEnableFreeMode: 启用自由模式
+    AdvancedSplideEnableFreeModeHelp: 允许自由滑动，不会自动对齐到幻灯片
   forum:
     loading: 加载中...
     error: 发生错误

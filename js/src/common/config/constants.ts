@@ -8,27 +8,27 @@ export const MOBILE_DETECTION = {
   USER_AGENT_SUBSTR_LENGTH: 4,
 } as const;
 
-// Swiper configuration constants
-export const SWIPER_CONFIG = {
+// Splide configuration constants
+export const SPLIDE_CONFIG = {
   MOBILE: {
-    SPACE_BETWEEN: 80,
-    SLIDES_PER_VIEW: 4,
+    GAP: '80px',
+    PER_PAGE: 4,
   },
   DESKTOP: {
-    SPACE_BETWEEN: 10,
-    SLIDES_PER_VIEW: 7,
+    GAP: '10px',
+    PER_PAGE: 7,
   },
-  AUTOPLAY_DELAY: 3000,
+  AUTOPLAY_INTERVAL: 3000,
 } as const;
 
-// Advanced swiper configuration constants
-export const ADVANCED_SWIPER_CONFIG = {
-  MIN_SLIDES_FOR_LOOP: 3,
+// Advanced splide configuration constants
+export const ADVANCED_SPLIDE_CONFIG = {
+  MIN_SLIDES_FOR_LOOP: 2, // Splide requires minimum 2 slides for loop mode
   MIN_SLIDES_FOR_AUTOPLAY: 2,
-  AUTOPLAY_DELAY: 3000,
+  AUTOPLAY_INTERVAL: 3000,
   TRANSITION_SPEED: 800,
-  SPACE_BETWEEN: 10,
-  SWIPER_INIT_DELAY: 100,
+  GAP: '10px',
+  SPLIDE_INIT_DELAY: 100,
 } as const;
 
 // Error handling constants
@@ -63,19 +63,20 @@ export const TIMING = {
 
 // DOM element constants
 export const DOM_ELEMENTS = {
-  SWIPER_TAG_CONTAINER_ID: 'swiperTagContainer',
-  SWIPER_TAG_WRAPPER_ID: 'swiperTagWrapper',
+  SPLIDE_TAG_CONTAINER_ID: 'splideTagContainer',
+  SPLIDE_TAG_WRAPPER_ID: 'splideTagWrapper',
 } as const;
 
 // CSS class constants
 export const CSS_CLASSES = {
-  SWIPER: 'swiper',
-  SWIPER_WRAPPER: 'swiper-wrapper',
-  SWIPER_SLIDE: 'swiper-slide',
-  SWIPER_SLIDE_TAG: 'swiper-slide-tag',
-  SWIPER_SLIDE_TAG_INNER: 'swiper-slide-tag-inner',
-  SWIPER_SLIDE_TAG_INNER_MOBILE: 'swiper-slide-tag-inner-mobile',
-  TAG_SWIPER: 'tagSwiper',
+  SPLIDE: 'splide',
+  SPLIDE_TRACK: 'splide__track',
+  SPLIDE_LIST: 'splide__list',
+  SPLIDE_SLIDE: 'splide__slide',
+  SPLIDE_SLIDE_TAG: 'splide__slide-tag',
+  SPLIDE_SLIDE_TAG_INNER: 'splide__slide-tag-inner',
+  SPLIDE_SLIDE_TAG_INNER_MOBILE: 'splide__slide-tag-inner-mobile',
+  TAG_SPLIDE: 'tagSplide',
   TAG_TILES: 'TagTiles',
   TAG_TILE: 'TagTile',
   TAG_TILE_NAME: 'TagTile-name',

@@ -1,11 +1,11 @@
 {
   "name": "wusong8899/flarum-tag-tiles",
-  "description": "Convert tag tiles to advanced swiper-based layout with social media integration and comprehensive autoplay controls",
+  "description": "Convert tag tiles to advanced splide-based layout with social media integration and comprehensive autoplay controls",
   "keywords": [
     "flarum",
     "tags",
     "tiles",
-    "swiper",
+    "splide",
     "social-media",
     "autoplay",
     "carousel"
@@ -29,7 +29,7 @@
   },
   "extra": {
     "flarum-extension": {
-      "title": "Tag Tiles Swiper",
+      "title": "Tag Tiles Splide",
       "category": "feature",
       "icon": {
         "name": "fas fa-th-large",

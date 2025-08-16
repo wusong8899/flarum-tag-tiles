@@ -1,4 +1,4 @@
-import { MOBILE_DETECTION, SWIPER_CONFIG } from '../../common/config/constants';
+import { MOBILE_DETECTION, SPLIDE_CONFIG } from '../../common/config/constants';
 import type { MobileConfig } from '../../common/config/types';
 
 /**
@@ -22,18 +22,18 @@ export const isMobileDevice = (): boolean => {
 };
 
 /**
- * Get swiper configuration based on device type
+ * Get splide configuration based on device type
  */
-export const getSwiperConfig = (): MobileConfig => {
+export const getSplideConfig = (): MobileConfig => {
     if (isMobileDevice()) {
         return {
-            spaceBetween: SWIPER_CONFIG.MOBILE.SPACE_BETWEEN,
-            slidesPerView: SWIPER_CONFIG.MOBILE.SLIDES_PER_VIEW,
+            gap: SPLIDE_CONFIG.MOBILE.GAP,
+            perPage: SPLIDE_CONFIG.MOBILE.PER_PAGE,
         };
     }
 
     return {
-        spaceBetween: SWIPER_CONFIG.DESKTOP.SPACE_BETWEEN,
-        slidesPerView: SWIPER_CONFIG.DESKTOP.SLIDES_PER_VIEW,
+        gap: SPLIDE_CONFIG.DESKTOP.GAP,
+        perPage: SPLIDE_CONFIG.DESKTOP.PER_PAGE,
     };
 };

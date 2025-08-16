@@ -1,20 +1,19 @@
-import Swiper from 'swiper';
-import { Autoplay } from 'swiper/modules';
+import { Splide } from '@splidejs/splide';
 import app from 'flarum/forum/app';
 import * as DOMUtils from '../utils/dom-utils';
 import { isMobileDevice } from '../utils/mobile-detection';
-import { ARRAY_CONSTANTS, ADVANCED_SWIPER_CONFIG } from '../../common/config/constants';
+import { ARRAY_CONSTANTS, ADVANCED_SPLIDE_CONFIG } from '../../common/config/constants';
 import { defaultConfig } from '../../common/config';
-import { getAdvancedSwiperConfig } from '../utils/config-reader';
+import { getAdvancedSplideConfig } from '../utils/config-reader';
 import type { TagData } from '../../common/config/types';
 
 /**
- * Tag Tiles Manager for converting TagTiles to swiper layout
+ * Tag Tiles Manager for converting TagTiles to splide layout
  */
 export class TagTilesManager {
 
     /**
-     * Change category layout to swiper-based layout
+     * Change category layout to splide-based layout
      */
     changeCategoryLayout(): void {
         try {
@@ -65,27 +64,27 @@ export class TagTilesManager {
      */
     private processTagTiles(tagTiles: NodeListOf<Element>): void {
         try {
-            const container = this.createTagSwiperContainer();
+            const container = this.createTagSplideContainer();
             if (!container) {
                 return;
             }
 
-            const swiper = this.createTagSwiper(container);
-            if (!swiper) {
+            const splide = this.createTagSplide(container);
+            if (!splide) {
                 return;
             }
 
-            const wrapper = this.createTagSwiperWrapper(swiper);
-            if (!wrapper) {
+            const list = this.createTagSplideList(splide);
+            if (!list) {
                 return;
             }
 
-            this.populateTagSlides(wrapper, tagTiles);
+            this.populateTagSlides(list, tagTiles);
             this.appendTagContainer(container);
-            this.addTagSwiperContent(container);
+            this.addTagSplideContent(container);
             this.removeOriginalTagTiles();
             this.setupMobileStyles();
-            this.initializeTagSwiper();
+            this.initializeTagSplide();
 
             // Notify other extensions that the tags layout has changed
             this.notifyTagsLayoutChanged();
@@ -95,11 +94,11 @@ export class TagTilesManager {
     }
 
     /**
-     * Create tag swiper container
+     * Create tag splide container
      */
-    private createTagSwiperContainer(): HTMLElement {
+    private createTagSplideContainer(): HTMLElement {
         const container = DOMUtils.createElement('div', {
-            className: 'swiperTagContainer',
+            className: 'splideTagContainer',
             id: defaultConfig.ui.tagContainerId
         });
 
@@ -112,35 +111,41 @@ export class TagTilesManager {
     }
 
     /**
-     * Create tag swiper element
+     * Create tag splide element
      */
-    private createTagSwiper(container: HTMLElement): HTMLElement {
-        const swiper = DOMUtils.createElement('div', {
-            className: 'swiper tagSwiper'
+    private createTagSplide(container: HTMLElement): HTMLElement {
+        const splide = DOMUtils.createElement('div', {
+            className: 'splide tagSplide'
         });
 
-        // Append swiper directly to the main container, not inside text container
-        DOMUtils.appendChild(container, swiper);
+        // Append splide directly to the main container, not inside text container
+        DOMUtils.appendChild(container, splide);
 
-        return swiper;
+        return splide;
     }
 
     /**
-     * Create tag swiper wrapper
+     * Create tag splide track and list
      */
-    private createTagSwiperWrapper(swiper: HTMLElement): HTMLElement {
-        const wrapper = DOMUtils.createElement('div', {
-            className: 'swiper-wrapper',
+    private createTagSplideList(splide: HTMLElement): HTMLElement {
+        const track = DOMUtils.createElement('div', {
+            className: 'splide__track'
+        });
+
+        const list = DOMUtils.createElement('ul', {
+            className: 'splide__list',
             id: defaultConfig.ui.tagWrapperId
         });
-        DOMUtils.appendChild(swiper, wrapper);
-        return wrapper;
+
+        DOMUtils.appendChild(track, list);
+        DOMUtils.appendChild(splide, track);
+        return list;
     }
 
     /**
-     * Populate tag slides
+     * Populate tag slides in the splide list
      */
-    private populateTagSlides(wrapper: HTMLElement, tagTiles: NodeListOf<Element>): void {
+    private populateTagSlides(list: HTMLElement, tagTiles: NodeListOf<Element>): void {
         const isMobile = isMobileDevice();
 
         for (const tag of tagTiles) {
@@ -149,7 +154,7 @@ export class TagTilesManager {
 
             if (tagData) {
                 const slide = this.createTagSlide(tagData, isMobile);
-                DOMUtils.appendChild(wrapper, slide);
+                DOMUtils.appendChild(list, slide);
             }
         }
     }
@@ -275,13 +280,13 @@ export class TagTilesManager {
      * Create individual tag slide
      */
     private createTagSlide(tagData: TagData, isMobile: boolean): HTMLElement {
-        const slide = DOMUtils.createElement('div', {
-            className: 'swiper-slide swiper-slide-tag'
+        const slide = DOMUtils.createElement('li', {
+            className: 'splide__slide splide__slide-tag'
         });
 
-        let innerClass = 'swiper-slide-tag-inner';
+        let innerClass = 'splide__slide-tag-inner';
         if (isMobile) {
-            innerClass = 'swiper-slide-tag-inner-mobile';
+            innerClass = 'splide__slide-tag-inner-mobile';
         }
 
         const backgroundStyle = `background:${tagData.background};background-size: cover;background-position: center;background-repeat: no-repeat;`;
@@ -335,7 +340,7 @@ export class TagTilesManager {
     /**
      * Add additional content to tag container
      */
-    private addTagSwiperContent(container: HTMLElement): void {
+    private addTagSplideContent(container: HTMLElement): void {
         const textContainer = container.querySelector('.TagTextOuterContainer');
         if (textContainer) {
             const titleElement = DOMUtils.createElement('div', {
@@ -452,15 +457,15 @@ export class TagTilesManager {
     }
 
     /**
-     * Initialize tag swiper with advanced configuration
+     * Initialize tag splide with advanced configuration
      */
-    private initializeTagSwiper(): void {
-        const advancedConfig = getAdvancedSwiperConfig();
+    private initializeTagSplide(): void {
+        const advancedConfig = getAdvancedSplideConfig();
 
         setTimeout(() => {
             try {
                 // Check if we have enough slides for loop mode
-                const slides = document.querySelectorAll('.tagSwiper .swiper-slide');
+                const slides = document.querySelectorAll('.tagSplide .splide__slide');
                 const hasEnoughSlides = slides.length >= advancedConfig.minSlidesForLoop;
 
                 // Determine if we should enable loop mode
@@ -468,56 +473,67 @@ export class TagTilesManager {
 
                 // Configure autoplay - Enable autoplay if we have at least 2 slides and autoplay is enabled
                 let autoplayConfig: object | false = false;
-                const shouldEnableAutoplay = advancedConfig.enableAutoplay && slides.length >= ADVANCED_SWIPER_CONFIG.MIN_SLIDES_FOR_AUTOPLAY;
+                const shouldEnableAutoplay = advancedConfig.enableAutoplay && slides.length >= ADVANCED_SPLIDE_CONFIG.MIN_SLIDES_FOR_AUTOPLAY;
 
                 if (shouldEnableAutoplay) {
                     autoplayConfig = {
-                        delay: advancedConfig.autoplayDelay,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: advancedConfig.pauseOnMouseEnter,
-                        reverseDirection: false,
-                        stopOnLastSlide: false,
-                        waitForTransition: true,
+                        interval: advancedConfig.autoplayInterval,
+                        pauseOnHover: advancedConfig.pauseOnMouseEnter,
                     };
                 }
 
-                // Adjust freeMode logic - disable freeMode when autoplay is enabled for better compatibility
-                const shouldEnableFreeMode = advancedConfig.enableFreeMode && !shouldEnableAutoplay;
+                // Note: Splide.js doesn't have freeMode like Swiper.js, so we skip this configuration
 
                 // Configure slides per view based on device
                 const isMobile = isMobileDevice();
-                const MOBILE_SLIDES_PER_VIEW = 3.5;
-                let slidesPerView: number | 'auto' = 'auto';
+                const MOBILE_PER_PAGE = 3.5;
+                const DEFAULT_PER_PAGE = 1;
+                let perPageValue = DEFAULT_PER_PAGE;
                 if (isMobile) {
-                    slidesPerView = MOBILE_SLIDES_PER_VIEW;
+                    perPageValue = MOBILE_PER_PAGE;
                 }
 
-                const swiperInstance = new Swiper('.tagSwiper', {
-                    slidesPerView: slidesPerView,
-                    spaceBetween: advancedConfig.spaceBetween,
-                    freeMode: shouldEnableFreeMode,
-                    loop: shouldEnableLoop,
-                    autoplay: autoplayConfig,
+                // Determine slide type
+                let slideType: 'loop' | 'slide' = 'slide';
+                if (shouldEnableLoop) {
+                    slideType = 'loop';
+                }
+
+                // Configure autoplay
+                let autoplaySettings: { interval: number; pauseOnHover: boolean } | false = false;
+                if (autoplayConfig) {
+                    autoplaySettings = {
+                        interval: advancedConfig.autoplayInterval,
+                        pauseOnHover: advancedConfig.pauseOnMouseEnter
+                    };
+                }
+
+                const splideInstance = new Splide('.tagSplide', {
+                    perPage: perPageValue,
+                    gap: advancedConfig.gap,
+                    type: slideType,
+                    autoplay: autoplaySettings,
                     speed: advancedConfig.transitionSpeed,
-                    grabCursor: advancedConfig.enableGrabCursor,
-                    centeredSlides: false, // Disable centered slides to prevent offset
-                    watchSlidesProgress: true,
-                    initialSlide: 0, // Start from the first slide
-                    modules: [Autoplay]
+                    drag: advancedConfig.enableGrabCursor,
+                    focus: ARRAY_CONSTANTS.EMPTY_LENGTH, // Start from the first slide
+                    pagination: false,
+                    arrows: true
                 });
 
-                // Store swiper instance for potential cleanup
-                if (swiperInstance) {
-                    // Swiper initialized successfully
-                    // Debug: Log swiper initialization
+                splideInstance.mount();
+
+                // Store splide instance for potential cleanup
+                if (splideInstance) {
+                    // Splide initialized successfully
+                    // Debug: Log splide initialization
                     if (process.env.NODE_ENV === 'development') {
                         // Development logging would go here
                     }
                 }
             } catch {
-                // Silently handle Swiper initialization errors
+                // Silently handle Splide initialization errors
             }
-        }, ADVANCED_SWIPER_CONFIG.SWIPER_INIT_DELAY);
+        }, ADVANCED_SPLIDE_CONFIG.SPLIDE_INIT_DELAY);
     }
 
     /**
@@ -529,7 +545,7 @@ export class TagTilesManager {
             const event = new CustomEvent('tagsLayoutChanged', {
                 detail: {
                     extensionId: defaultConfig.app.extensionId,
-                    layoutType: 'swiper'
+                    layoutType: 'splide'
                 }
             });
             document.dispatchEvent(event);

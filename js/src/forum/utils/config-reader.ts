@@ -1,6 +1,6 @@
 import app from 'flarum/forum/app';
 import { defaultConfig } from '../../common/config';
-import type { AdvancedSwiperConfig } from '../../common/config/types';
+import type { AdvancedSplideConfig } from '../../common/config/types';
 
 const EXTENSION_ID = 'wusong8899-tag-tiles';
 
@@ -47,20 +47,20 @@ const getSetting = <TValue>(settingKey: string, defaultValue: TValue): TValue =>
 };
 
 /**
- * Get advanced swiper configuration from Flarum settings
+ * Get advanced splide configuration from Flarum settings
  */
-export const getAdvancedSwiperConfig = (): AdvancedSwiperConfig => {
+export const getAdvancedSplideConfig = (): AdvancedSplideConfig => {
     const defaults = defaultConfig.tagTiles.advanced;
 
     return {
-        minSlidesForLoop: getSetting('AdvancedSwiperMinSlidesForLoop', defaults.minSlidesForLoop),
-        enableAutoplay: getSetting('AdvancedSwiperEnableAutoplay', defaults.enableAutoplay),
-        autoplayDelay: getSetting('AdvancedSwiperAutoplayDelay', defaults.autoplayDelay),
-        enableLoopMode: getSetting('AdvancedSwiperEnableLoopMode', defaults.enableLoopMode),
-        transitionSpeed: getSetting('AdvancedSwiperTransitionSpeed', defaults.transitionSpeed),
-        spaceBetween: getSetting('AdvancedSwiperSpaceBetween', defaults.spaceBetween),
-        pauseOnMouseEnter: getSetting('AdvancedSwiperPauseOnMouseEnter', defaults.pauseOnMouseEnter),
-        enableGrabCursor: getSetting('AdvancedSwiperEnableGrabCursor', defaults.enableGrabCursor),
-        enableFreeMode: getSetting('AdvancedSwiperEnableFreeMode', defaults.enableFreeMode),
+        minSlidesForLoop: getSetting('AdvancedSplideMinSlidesForLoop', defaults.minSlidesForLoop),
+        enableAutoplay: getSetting('AdvancedSplideEnableAutoplay', defaults.enableAutoplay),
+        autoplayInterval: getSetting('AdvancedSplideAutoplayInterval', defaults.autoplayInterval),
+        enableLoopMode: getSetting('AdvancedSplideEnableLoopMode', defaults.enableLoopMode),
+        transitionSpeed: getSetting('AdvancedSplideTransitionSpeed', defaults.transitionSpeed),
+        gap: getSetting('AdvancedSplideGap', defaults.gap),
+        pauseOnMouseEnter: getSetting('AdvancedSplidePauseOnMouseEnter', defaults.pauseOnMouseEnter),
+        enableGrabCursor: getSetting('AdvancedSplideEnableGrabCursor', defaults.enableGrabCursor),
+        enableFreeMode: getSetting('AdvancedSplideEnableFreeMode', defaults.enableFreeMode),
     };
 };

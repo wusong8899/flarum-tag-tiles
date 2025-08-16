@@ -2,18 +2,18 @@
   "name": "@wusong8899/flarum-tag-tiles",
   "version": "1.0.0",
   "private": true,
-  "description": "Convert tag tiles to advanced swiper-based layout with social media integration and comprehensive autoplay controls",
+  "description": "Convert tag tiles to advanced splide-based layout with social media integration and comprehensive autoplay controls",
   "keywords": [
     "flarum",
     "extension",
     "tags",
     "tiles",
-    "swiper",
+    "splide",
     "autoplay",
     "carousel"
   ],
   "dependencies": {
-    "swiper": "^11.2.10"
+    "@splidejs/splide": "^4.1.4"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.32",

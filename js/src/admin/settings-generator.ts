@@ -41,79 +41,79 @@ export class SettingsGenerator {
     }
 
     /**
-     * Register advanced swiper configuration settings
+     * Register advanced splide configuration settings
      */
-    registerAdvancedSwiperSettings(): this {
+    registerAdvancedSplideSettings(): this {
         // Minimum slides for loop mode
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperMinSlidesForLoop`,
+            setting: `${this.extensionId}.AdvancedSplideMinSlidesForLoop`,
             type: 'number',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperMinSlidesForLoop')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperMinSlidesForLoopHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideMinSlidesForLoop')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideMinSlidesForLoopHelp')),
         });
 
         // Enable autoplay
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperEnableAutoplay`,
+            setting: `${this.extensionId}.AdvancedSplideEnableAutoplay`,
             type: 'boolean',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableAutoplay')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableAutoplayHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableAutoplay')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableAutoplayHelp')),
         });
 
-        // Autoplay delay
+        // Autoplay interval
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperAutoplayDelay`,
+            setting: `${this.extensionId}.AdvancedSplideAutoplayInterval`,
             type: 'number',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperAutoplayDelay')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperAutoplayDelayHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideAutoplayInterval')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideAutoplayIntervalHelp')),
         });
 
         // Enable loop mode
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperEnableLoopMode`,
+            setting: `${this.extensionId}.AdvancedSplideEnableLoopMode`,
             type: 'boolean',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableLoopMode')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableLoopModeHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableLoopMode')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableLoopModeHelp')),
         });
 
         // Transition speed
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperTransitionSpeed`,
+            setting: `${this.extensionId}.AdvancedSplideTransitionSpeed`,
             type: 'number',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperTransitionSpeed')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperTransitionSpeedHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideTransitionSpeed')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideTransitionSpeedHelp')),
         });
 
-        // Space between slides
+        // Gap between slides
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperSpaceBetween`,
-            type: 'number',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperSpaceBetween')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperSpaceBetweenHelp')),
+            setting: `${this.extensionId}.AdvancedSplideGap`,
+            type: 'string',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideGap')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideGapHelp')),
         });
 
         // Pause on mouse enter
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperPauseOnMouseEnter`,
+            setting: `${this.extensionId}.AdvancedSplidePauseOnMouseEnter`,
             type: 'boolean',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperPauseOnMouseEnter')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperPauseOnMouseEnterHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplidePauseOnMouseEnter')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplidePauseOnMouseEnterHelp')),
         });
 
         // Enable grab cursor
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperEnableGrabCursor`,
+            setting: `${this.extensionId}.AdvancedSplideEnableGrabCursor`,
             type: 'boolean',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableGrabCursor')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableGrabCursorHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableGrabCursor')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableGrabCursorHelp')),
         });
 
         // Enable free mode
         this.extensionData.registerSetting({
-            setting: `${this.extensionId}.AdvancedSwiperEnableFreeMode`,
+            setting: `${this.extensionId}.AdvancedSplideEnableFreeMode`,
             type: 'boolean',
-            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableFreeMode')),
-            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableFreeModeHelp')),
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableFreeMode')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSplideEnableFreeModeHelp')),
         });
 
         return this;
@@ -125,7 +125,7 @@ export class SettingsGenerator {
     registerAllSettings(): this {
         return this
             .registerSocialMediaSettings()
-            .registerAdvancedSwiperSettings();
+            .registerAdvancedSplideSettings();
     }
 }
 

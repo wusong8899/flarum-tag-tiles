@@ -3,8 +3,8 @@ import {
   EXTENSION_CONFIG,
   TIMING,
   DOM_ELEMENTS,
-  SWIPER_CONFIG,
-  ADVANCED_SWIPER_CONFIG
+  SPLIDE_CONFIG,
+  ADVANCED_SPLIDE_CONFIG
 } from './constants';
 
 export const defaultConfig: RootConfig = {
@@ -14,31 +14,31 @@ export const defaultConfig: RootConfig = {
     translationPrefix: EXTENSION_CONFIG.TRANSLATION_PREFIX,
   },
   tagTiles: {
-    autoplayDelay: SWIPER_CONFIG.AUTOPLAY_DELAY,
+    autoplayInterval: SPLIDE_CONFIG.AUTOPLAY_INTERVAL,
     checkInterval: TIMING.CHECK_INTERVAL,
     dataCheckInterval: TIMING.DATA_CHECK_INTERVAL,
     mobile: {
-      spaceBetween: SWIPER_CONFIG.MOBILE.SPACE_BETWEEN,
-      slidesPerView: SWIPER_CONFIG.MOBILE.SLIDES_PER_VIEW,
+      gap: SPLIDE_CONFIG.MOBILE.GAP,
+      perPage: SPLIDE_CONFIG.MOBILE.PER_PAGE,
     },
     desktop: {
-      spaceBetween: SWIPER_CONFIG.DESKTOP.SPACE_BETWEEN,
-      slidesPerView: SWIPER_CONFIG.DESKTOP.SLIDES_PER_VIEW,
+      gap: SPLIDE_CONFIG.DESKTOP.GAP,
+      perPage: SPLIDE_CONFIG.DESKTOP.PER_PAGE,
     },
     advanced: {
-      minSlidesForLoop: ADVANCED_SWIPER_CONFIG.MIN_SLIDES_FOR_LOOP,
+      minSlidesForLoop: ADVANCED_SPLIDE_CONFIG.MIN_SLIDES_FOR_LOOP,
       enableAutoplay: true,
-      autoplayDelay: ADVANCED_SWIPER_CONFIG.AUTOPLAY_DELAY,
+      autoplayInterval: ADVANCED_SPLIDE_CONFIG.AUTOPLAY_INTERVAL,
       enableLoopMode: true,
-      transitionSpeed: ADVANCED_SWIPER_CONFIG.TRANSITION_SPEED,
-      spaceBetween: ADVANCED_SWIPER_CONFIG.SPACE_BETWEEN,
+      transitionSpeed: ADVANCED_SPLIDE_CONFIG.TRANSITION_SPEED,
+      gap: ADVANCED_SPLIDE_CONFIG.GAP,
       pauseOnMouseEnter: true,
       enableGrabCursor: true,
-      enableFreeMode: true,
+      enableFreeMode: false, // Splide doesn't have free mode like Swiper.js
     },
   },
   ui: {
-    tagContainerId: DOM_ELEMENTS.SWIPER_TAG_CONTAINER_ID,
-    tagWrapperId: DOM_ELEMENTS.SWIPER_TAG_WRAPPER_ID,
+    tagContainerId: DOM_ELEMENTS.SPLIDE_TAG_CONTAINER_ID,
+    tagWrapperId: DOM_ELEMENTS.SPLIDE_TAG_WRAPPER_ID,
   },
 };
