@@ -1,12 +1,14 @@
 {
   "name": "wusong8899/flarum-tag-tiles",
-  "description": "Convert tag tiles to swiper-based layout with social media integration",
+  "description": "Convert tag tiles to advanced swiper-based layout with social media integration and comprehensive autoplay controls",
   "keywords": [
     "flarum",
     "tags",
     "tiles",
     "swiper",
-    "social-media"
+    "social-media",
+    "autoplay",
+    "carousel"
   ],
   "type": "flarum-extension",
   "license": "MIT",

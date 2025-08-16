@@ -27,11 +27,21 @@
 .tagSwiper {
   width: 100%;
   padding: 20px 0;
+  overflow: hidden;
+}
+
+.tagSwiper.swiper-grab {
+  cursor: grab;
+}
+
+.tagSwiper.swiper-grabbing {
+  cursor: grabbing;
 }
 
 .tagSwiper .swiper-wrapper {
   display: flex;
   align-items: center;
+  transition-timing-function: ease-out;
 }
 
 .tagSwiper .swiper-slide {
@@ -41,6 +51,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tagSwiper .swiper-slide-active {
+  opacity: 1;
+}
+
+.tagSwiper .swiper-slide-next,
+.tagSwiper .swiper-slide-prev {
+  opacity: 0.8;
 }
 
 .swiper-slide-tag {
@@ -64,11 +84,30 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .swiper-slide-tag-inner:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-slide-tag-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.swiper-slide-tag-inner:hover::before {
+  transform: translateX(100%);
 }
 
 .swiper-slide-tag-inner-mobile {
@@ -96,6 +135,25 @@
   transform: scale(1.1);
 }
 
+/* Autoplay pause indicator */
+.tagSwiper.swiper-paused {
+  opacity: 0.9;
+}
+
+.tagSwiper.swiper-paused .swiper-slide {
+  animation-play-state: paused;
+}
+
+/* Free mode styles */
+.tagSwiper.swiper-free-mode .swiper-wrapper {
+  transition-timing-function: ease-out;
+}
+
+/* Loop mode styles */
+.tagSwiper.swiper-loop .swiper-slide {
+  opacity: 1;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .swiperTagContainer {
@@ -113,5 +171,15 @@
   .TagTextContainer {
     font-size: 14px;
     padding: 8px 0;
+  }
+
+  /* Disable hover effects on mobile */
+  .swiper-slide-tag-inner:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .swiper-slide-tag-inner:hover::before {
+    transform: translateX(-100%);
   }
 }

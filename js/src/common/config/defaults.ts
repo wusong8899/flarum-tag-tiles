@@ -3,7 +3,8 @@ import {
   EXTENSION_CONFIG,
   TIMING,
   DOM_ELEMENTS,
-  SWIPER_CONFIG
+  SWIPER_CONFIG,
+  ADVANCED_SWIPER_CONFIG
 } from './constants';
 
 export const defaultConfig: RootConfig = {
@@ -23,6 +24,17 @@ export const defaultConfig: RootConfig = {
     desktop: {
       spaceBetween: SWIPER_CONFIG.DESKTOP.SPACE_BETWEEN,
       slidesPerView: SWIPER_CONFIG.DESKTOP.SLIDES_PER_VIEW,
+    },
+    advanced: {
+      minSlidesForLoop: ADVANCED_SWIPER_CONFIG.MIN_SLIDES_FOR_LOOP,
+      enableAutoplay: true,
+      autoplayDelay: ADVANCED_SWIPER_CONFIG.AUTOPLAY_DELAY,
+      enableLoopMode: true,
+      transitionSpeed: ADVANCED_SWIPER_CONFIG.TRANSITION_SPEED,
+      spaceBetween: ADVANCED_SWIPER_CONFIG.SPACE_BETWEEN,
+      pauseOnMouseEnter: true,
+      enableGrabCursor: true,
+      enableFreeMode: true,
     },
   },
   ui: {

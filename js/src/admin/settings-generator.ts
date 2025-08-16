@@ -41,10 +41,91 @@ export class SettingsGenerator {
     }
 
     /**
+     * Register advanced swiper configuration settings
+     */
+    registerAdvancedSwiperSettings(): this {
+        // Minimum slides for loop mode
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperMinSlidesForLoop`,
+            type: 'number',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperMinSlidesForLoop')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperMinSlidesForLoopHelp')),
+        });
+
+        // Enable autoplay
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperEnableAutoplay`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableAutoplay')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableAutoplayHelp')),
+        });
+
+        // Autoplay delay
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperAutoplayDelay`,
+            type: 'number',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperAutoplayDelay')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperAutoplayDelayHelp')),
+        });
+
+        // Enable loop mode
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperEnableLoopMode`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableLoopMode')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableLoopModeHelp')),
+        });
+
+        // Transition speed
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperTransitionSpeed`,
+            type: 'number',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperTransitionSpeed')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperTransitionSpeedHelp')),
+        });
+
+        // Space between slides
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperSpaceBetween`,
+            type: 'number',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperSpaceBetween')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperSpaceBetweenHelp')),
+        });
+
+        // Pause on mouse enter
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperPauseOnMouseEnter`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperPauseOnMouseEnter')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperPauseOnMouseEnterHelp')),
+        });
+
+        // Enable grab cursor
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperEnableGrabCursor`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableGrabCursor')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableGrabCursorHelp')),
+        });
+
+        // Enable free mode
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdvancedSwiperEnableFreeMode`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableFreeMode')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdvancedSwiperEnableFreeModeHelp')),
+        });
+
+        return this;
+    }
+
+    /**
      * Register all settings for the extension
      */
     registerAllSettings(): this {
-        return this.registerSocialMediaSettings();
+        return this
+            .registerSocialMediaSettings()
+            .registerAdvancedSwiperSettings();
     }
 }
 

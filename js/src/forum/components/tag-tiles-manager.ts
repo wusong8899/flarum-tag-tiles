@@ -2,9 +2,10 @@ import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import app from 'flarum/forum/app';
 import * as DOMUtils from '../utils/dom-utils';
-import { isMobileDevice, getSwiperConfig } from '../utils/mobile-detection';
-import { ARRAY_CONSTANTS, SWIPER_CONFIG } from '../../common/config/constants';
+import { isMobileDevice } from '../utils/mobile-detection';
+import { ARRAY_CONSTANTS, ADVANCED_SWIPER_CONFIG } from '../../common/config/constants';
 import { defaultConfig } from '../../common/config';
+import { getAdvancedSwiperConfig } from '../utils/config-reader';
 import type { TagData } from '../../common/config/types';
 
 /**
@@ -354,7 +355,7 @@ export class TagTilesManager {
      * Create social buttons HTML
      */
     private createSocialButtonsHTML(): string {
-        const extensionId = defaultConfig.app.extensionId;
+        const { extensionId } = defaultConfig.app;
 
         // Define social media platforms with their settings keys and default icons
         const socialPlatforms = [
@@ -453,28 +454,59 @@ export class TagTilesManager {
     }
 
     /**
-     * Initialize tag swiper
+     * Initialize tag swiper with advanced configuration
      */
     private initializeTagSwiper(): void {
-        try {
-            const config = getSwiperConfig();
-            const swiperInstance = new Swiper(".tagSwiper", {
-                loop: true,
-                spaceBetween: config.spaceBetween,
-                slidesPerView: config.slidesPerView,
-                autoplay: {
-                    delay: SWIPER_CONFIG.AUTOPLAY_DELAY,
-                    disableOnInteraction: false,
-                },
-                modules: [Autoplay]
-            });
-            // Store reference to prevent garbage collection
-            if (swiperInstance) {
-                // Swiper initialized successfully
+        const advancedConfig = getAdvancedSwiperConfig();
+
+        setTimeout(() => {
+            try {
+                // Check if we have enough slides for loop mode
+                const slides = document.querySelectorAll('.tagSwiper .swiper-slide');
+                const hasEnoughSlides = slides.length >= advancedConfig.minSlidesForLoop;
+
+                // Determine if we should enable loop mode
+                const shouldEnableLoop = advancedConfig.enableLoopMode && hasEnoughSlides;
+
+                // Configure autoplay - Enable autoplay if we have at least 2 slides and autoplay is enabled
+                let autoplayConfig: object | false = false;
+                const shouldEnableAutoplay = advancedConfig.enableAutoplay && slides.length >= ADVANCED_SWIPER_CONFIG.MIN_SLIDES_FOR_AUTOPLAY;
+
+                if (shouldEnableAutoplay) {
+                    autoplayConfig = {
+                        delay: advancedConfig.autoplayDelay,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: advancedConfig.pauseOnMouseEnter,
+                        reverseDirection: false,
+                        stopOnLastSlide: false,
+                        waitForTransition: true,
+                    };
+                }
+
+                // Adjust freeMode logic - disable freeMode when autoplay is enabled for better compatibility
+                const shouldEnableFreeMode = advancedConfig.enableFreeMode && !shouldEnableAutoplay;
+
+                const swiperInstance = new Swiper('.tagSwiper', {
+                    slidesPerView: 'auto',
+                    spaceBetween: advancedConfig.spaceBetween,
+                    freeMode: shouldEnableFreeMode,
+                    loop: shouldEnableLoop,
+                    autoplay: autoplayConfig,
+                    speed: advancedConfig.transitionSpeed,
+                    grabCursor: advancedConfig.enableGrabCursor,
+                    centeredSlides: shouldEnableLoop, // Center slides when loop is enabled
+                    watchSlidesProgress: true,
+                    modules: [Autoplay]
+                });
+
+                // Store swiper instance for potential cleanup
+                if (swiperInstance) {
+                    // Swiper initialized successfully
+                }
+            } catch {
+                // Silently handle Swiper initialization errors
             }
-        } catch {
-            // Silently handle tag swiper initialization errors
-        }
+        }, ADVANCED_SWIPER_CONFIG.SWIPER_INIT_DELAY);
     }
 
     /**

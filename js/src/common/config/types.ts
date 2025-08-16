@@ -10,12 +10,25 @@ export interface SwiperConfig {
   slidesPerView: number;
 }
 
+export interface AdvancedSwiperConfig {
+  minSlidesForLoop: number;
+  enableAutoplay: boolean;
+  autoplayDelay: number;
+  enableLoopMode: boolean;
+  transitionSpeed: number;
+  spaceBetween: number;
+  pauseOnMouseEnter: boolean;
+  enableGrabCursor: boolean;
+  enableFreeMode: boolean;
+}
+
 export interface TagTilesConfig {
   autoplayDelay: number;
   checkInterval: number;
   dataCheckInterval: number;
   mobile: SwiperConfig;
   desktop: SwiperConfig;
+  advanced: AdvancedSwiperConfig;
 }
 
 export interface UIConfig {

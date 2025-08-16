@@ -7,7 +7,9 @@ import { defaultConfig } from '../../common/config';
 export class ConfigManager {
     private static instance: ConfigManager;
 
-    private constructor() {}
+    private constructor() {
+        // Private constructor for singleton pattern
+    }
 
     /**
      * Get singleton instance
@@ -29,7 +31,7 @@ export class ConfigManager {
         } catch {
             // Fallback: check URL
             try {
-                return window.location.pathname.includes('/tags');
+                return globalThis.location.pathname.includes('/tags');
             } catch {
                 return false;
             }
@@ -39,7 +41,7 @@ export class ConfigManager {
     /**
      * Get extension configuration
      */
-    public getConfig() {
+    public getConfig(): typeof defaultConfig {
         return defaultConfig;
     }
 
@@ -50,16 +52,16 @@ export class ConfigManager {
         try {
             // Check if at least one social media platform is configured
             const socialPlatforms = ['Kick', 'Facebook', 'Twitter', 'YouTube', 'Instagram'];
-            
+
             for (const platform of socialPlatforms) {
                 const url = app.forum.attribute(`${defaultConfig.app.extensionId}.Social${platform}Url`);
                 const icon = app.forum.attribute(`${defaultConfig.app.extensionId}.Social${platform}Icon`);
-                
+
                 if (url && icon) {
                     return true;
                 }
             }
-            
+
             return false;
         } catch {
             return false;

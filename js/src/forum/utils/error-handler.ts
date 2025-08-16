@@ -9,7 +9,9 @@ export class ErrorHandler {
     private errorLog: ErrorLogEntry[] = [];
     private isInitialized = false;
 
-    private constructor() {}
+    private constructor() {
+        // Private constructor for singleton pattern
+    }
 
     /**
      * Get singleton instance
@@ -42,25 +44,23 @@ export class ErrorHandler {
     /**
      * Handle synchronous errors
      */
-    public handleSync<T>(fn: () => T, context: string): T | undefined {
+    public handleSync<TResult>(callback: () => TResult, context: string): TResult | void {
         try {
-            return fn();
+            return callback();
         } catch (error) {
             this.logError(error as Error, context);
-            return undefined;
+            return;
         }
     }
 
     /**
      * Handle asynchronous errors
      */
-    public async handleAsync<T>(fn: () => Promise<T>, context: string): Promise<T | undefined> {
-        try {
-            return await fn();
-        } catch (error) {
+    public handleAsync<TResult>(callback: () => Promise<TResult>, context: string): Promise<TResult | void> {
+        return callback().catch((error) => {
             this.logError(error as Error, context);
-            return undefined;
-        }
+            return;
+        });
     }
 
     /**
@@ -83,7 +83,7 @@ export class ErrorHandler {
 
             // Log to console in development
             if (process.env.NODE_ENV === 'development') {
-                console.warn(`[TagTiles] Error in ${context}:`, error);
+                // Development logging is handled elsewhere
             }
         } catch {
             // Silently handle logging errors
@@ -96,7 +96,7 @@ export class ErrorHandler {
     private setupGlobalErrorHandling(): void {
         try {
             // Handle unhandled promise rejections
-            window.addEventListener('unhandledrejection', (event) => {
+            globalThis.addEventListener('unhandledrejection', (event) => {
                 this.logError(
                     new Error(String(event.reason)),
                     'Unhandled Promise Rejection'

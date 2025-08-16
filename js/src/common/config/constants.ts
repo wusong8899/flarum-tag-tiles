@@ -21,6 +21,16 @@ export const SWIPER_CONFIG = {
   AUTOPLAY_DELAY: 3000,
 } as const;
 
+// Advanced swiper configuration constants
+export const ADVANCED_SWIPER_CONFIG = {
+  MIN_SLIDES_FOR_LOOP: 3,
+  MIN_SLIDES_FOR_AUTOPLAY: 2,
+  AUTOPLAY_DELAY: 3000,
+  TRANSITION_SPEED: 800,
+  SPACE_BETWEEN: 10,
+  SWIPER_INIT_DELAY: 100,
+} as const;
+
 // Error handling constants
 export const ERROR_HANDLING = {
   MAX_ERROR_LOG_ENTRIES: 50,

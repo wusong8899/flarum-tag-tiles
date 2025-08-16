@@ -11,7 +11,7 @@ export const querySelector = (selector: string): Element | null => {
     try {
         return document.querySelector(selector);
     } catch {
-        return null;
+        return;
     }
 };
 
@@ -33,7 +33,7 @@ export const getElementById = (id: string): HTMLElement | null => {
     try {
         return document.getElementById(id);
     } catch {
-        return null;
+        return;
     }
 };
 
@@ -47,7 +47,7 @@ export const createElement = (
 ): HTMLElement => {
     try {
         const element = document.createElement(tagName);
-        
+
         // Set attributes
         for (const [key, value] of Object.entries(options)) {
             if (key === 'className') {
@@ -58,11 +58,11 @@ export const createElement = (
                 element.setAttribute(key, String(value));
             }
         }
-        
+
         if (innerHTML) {
             element.innerHTML = innerHTML;
         }
-        
+
         return element;
     } catch {
         return document.createElement('div'); // Fallback
