@@ -500,8 +500,9 @@ export class TagTilesManager {
                     autoplay: autoplayConfig,
                     speed: advancedConfig.transitionSpeed,
                     grabCursor: advancedConfig.enableGrabCursor,
-                    centeredSlides: shouldEnableLoop, // Center slides when loop is enabled
+                    centeredSlides: false, // Disable centered slides to prevent offset
                     watchSlidesProgress: true,
+                    initialSlide: 0, // Start from the first slide
                     modules: [Autoplay]
                 });
 
