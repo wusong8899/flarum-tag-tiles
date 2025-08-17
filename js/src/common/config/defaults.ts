@@ -37,8 +37,26 @@ export const defaultConfig: RootConfig = {
       enableFreeMode: false, // Splide doesn't have free mode like Swiper.js
     },
   },
+  ads: {
+    enableAds: true,
+    autoplayInterval: ADVANCED_SPLIDE_CONFIG.AUTOPLAY_INTERVAL,
+    checkInterval: TIMING.CHECK_INTERVAL,
+    advanced: {
+      minSlidesForLoop: ADVANCED_SPLIDE_CONFIG.MIN_SLIDES_FOR_LOOP,
+      enableAutoplay: true,
+      autoplayInterval: ADVANCED_SPLIDE_CONFIG.AUTOPLAY_INTERVAL,
+      enableLoopMode: true,
+      transitionSpeed: ADVANCED_SPLIDE_CONFIG.TRANSITION_SPEED,
+      gap: ADVANCED_SPLIDE_CONFIG.GAP,
+      pauseOnMouseEnter: true,
+      enableGrabCursor: true,
+      enableFreeMode: false,
+    },
+  },
   ui: {
     tagContainerId: DOM_ELEMENTS.SPLIDE_TAG_CONTAINER_ID,
     tagWrapperId: DOM_ELEMENTS.SPLIDE_TAG_WRAPPER_ID,
+    adContainerId: DOM_ELEMENTS.SPLIDE_AD_CONTAINER_ID,
+    adWrapperId: DOM_ELEMENTS.SPLIDE_AD_WRAPPER_ID,
   },
 };

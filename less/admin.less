@@ -29,3 +29,196 @@
   border-color: #007bff;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
+
+.FormControl.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+/* Dynamic Advertisement Settings */
+.DynamicAdSettings {
+  margin-top: 20px;
+}
+
+.DynamicAdSettings-ad {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #f8f9fa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.DynamicAdSettings-ad:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+.DynamicAdSettings-adHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.DynamicAdSettings-adHeader h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.DynamicAdSettings-adFields {
+  display: grid;
+  gap: 15px;
+}
+
+.DynamicAdSettings-addButton {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.DynamicAdSettings-addButton:hover {
+  border-color: #007bff;
+  background: #f0f8ff;
+}
+
+/* Button Styles */
+.Button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.Button--primary {
+  background: #007bff;
+  color: white;
+}
+
+.Button--primary:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.Button--danger {
+  background: #dc3545;
+  color: white;
+}
+
+.Button--danger:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.Button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.Button:disabled:hover {
+  background: inherit;
+}
+
+/* Icons */
+.Button i {
+  font-size: 12px;
+}
+
+/* Error text styling */
+.helpText.error {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+/* Checkbox styling */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkbox input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  color: #007bff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .DynamicAdSettings-adHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .DynamicAdSettings-adHeader > div {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .Button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+/* Form validation states */
+.Form-group.has-error .FormControl {
+  border-color: #dc3545;
+}
+
+.Form-group.has-success .FormControl {
+  border-color: #28a745;
+}
+
+/* Loading states */
+.Button.is-loading {
+  pointer-events: none;
+  position: relative;
+  color: transparent;
+}
+
+.Button.is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

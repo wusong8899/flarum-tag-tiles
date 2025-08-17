@@ -34,12 +34,22 @@ export interface TagTilesConfig {
 export interface UIConfig {
   tagContainerId: string;
   tagWrapperId: string;
+  adContainerId: string;
+  adWrapperId: string;
+}
+
+export interface AdConfig {
+  enableAds: boolean;
+  autoplayInterval: number;
+  checkInterval: number;
+  advanced: AdvancedSplideConfig;
 }
 
 export interface RootConfig {
   env: Environment;
   app: AppConfig;
   tagTiles: TagTilesConfig;
+  ads: AdConfig;
   ui: UIConfig;
 }
 
@@ -51,6 +61,12 @@ export interface TagData {
   nameColor: string;
   description: string;
   descColor: string;
+}
+
+export interface AdData {
+  id: number;
+  link: string;
+  image: string;
 }
 
 export interface ErrorLogEntry {

@@ -120,12 +120,36 @@ export class SettingsGenerator {
     }
 
     /**
+     * Register advertisement settings
+     */
+    registerAdvertisementSettings(): this {
+        // Enable advertisements setting
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.EnableAds`,
+            type: 'boolean',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.EnableAds')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.EnableAdsHelp')),
+        });
+
+        // Advertisement autoplay interval
+        this.extensionData.registerSetting({
+            setting: `${this.extensionId}.AdAutoplayInterval`,
+            type: 'number',
+            label: String(app.translator.trans('wusong8899-tag-tiles.admin.AdAutoplayInterval')),
+            help: String(app.translator.trans('wusong8899-tag-tiles.admin.AdAutoplayIntervalHelp')),
+        });
+
+        return this;
+    }
+
+    /**
      * Register all settings for the extension
      */
     registerAllSettings(): this {
         return this
             .registerSocialMediaSettings()
-            .registerAdvancedSplideSettings();
+            .registerAdvancedSplideSettings()
+            .registerAdvertisementSettings();
     }
 }
 

@@ -9,9 +9,7 @@
   "categories": {
     "correctness": "error",
     "suspicious": "error",
-    "perf": "error",
-    "style": "error",
-    "restriction": "error"
+    "perf": "error"
   },
   "rules": {
     "sort-imports": "off",

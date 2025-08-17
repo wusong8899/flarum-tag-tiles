@@ -65,6 +65,8 @@ export const TIMING = {
 export const DOM_ELEMENTS = {
   SPLIDE_TAG_CONTAINER_ID: 'splideTagContainer',
   SPLIDE_TAG_WRAPPER_ID: 'splideTagWrapper',
+  SPLIDE_AD_CONTAINER_ID: 'splideAdContainer',
+  SPLIDE_AD_WRAPPER_ID: 'splideAdWrapper',
 } as const;
 
 // CSS class constants
@@ -76,7 +78,10 @@ export const CSS_CLASSES = {
   SPLIDE_SLIDE_TAG: 'splide__slide-tag',
   SPLIDE_SLIDE_TAG_INNER: 'splide__slide-tag-inner',
   SPLIDE_SLIDE_TAG_INNER_MOBILE: 'splide__slide-tag-inner-mobile',
+  SPLIDE_SLIDE_AD: 'splide__slide-ad',
+  SPLIDE_SLIDE_AD_INNER: 'splide__slide-ad-inner',
   TAG_SPLIDE: 'tagSplide',
+  AD_SPLIDE: 'adSplide',
   TAG_TILES: 'TagTiles',
   TAG_TILE: 'TagTile',
   TAG_TILE_NAME: 'TagTile-name',
@@ -84,6 +89,7 @@ export const CSS_CLASSES = {
   TAG_TEXT_OUTER_CONTAINER: 'TagTextOuterContainer',
   TAG_TEXT_CONTAINER: 'TagTextContainer',
   TAG_TEXT_ICON: 'TagTextIcon',
+  AD_CONTAINER: 'splideAdContainer',
 } as const;
 
 // CSS selector constants
