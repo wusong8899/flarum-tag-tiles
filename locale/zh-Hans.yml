@@ -41,6 +41,23 @@ wusong8899-tag-tiles:
     AdvancedSplideEnableGrabCursorHelp: 悬停在幻灯片上时显示抓取光标
     AdvancedSplideEnableFreeMode: 启用自由模式
     AdvancedSplideEnableFreeModeHelp: 允许自由滑动，不会自动对齐到幻灯片
+
+    # 广告设置
+    EnableAds: 启用广告
+    EnableAdsHelp: 开启或关闭广告轮播功能
+    AdAutoplayInterval: 广告自动播放间隔（毫秒）
+    AdAutoplayIntervalHelp: "广告切换间隔时间，单位毫秒（默认：3000）"
+    AdSettings: 广告管理
+    AdSettingsHelp: 配置将在标签页面顶部轮播显示的广告幻灯片
+    AddAd: 添加广告
+    DeleteAd: 删除
+    PreviewAd: 预览
+    AdNumber: "广告 #{number}"
+    AdImage: 图片链接
+    AdLink: 跳转链接（可选）
+    AdLinkHelp: 点击广告时跳转的网址（可选）
+    InvalidImageUrl: 请输入有效的图片链接
+    InvalidLinkUrl: 请输入有效的跳转链接
   forum:
     loading: 加载中...
     error: 发生错误

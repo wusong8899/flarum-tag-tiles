@@ -170,7 +170,7 @@ export default class DynamicAdSettingsComponent extends Component<DynamicAdSetti
     if (!url) return true; // Empty URL is valid (optional field)
     
     try {
-      new URL(url);
+      const _url = new URL(url);
       return true;
     } catch {
       return false;
@@ -190,22 +190,8 @@ export default class DynamicAdSettingsComponent extends Component<DynamicAdSetti
         </div>
 
         <div className="DynamicAdSettings">
-          {/* Ads list */}
-          {this.ads.map((ad, index) => this.renderAd(ad, index))}
-          
-          {/* Add button */}
-          <div className="DynamicAdSettings-addButton" style={{ marginTop: '15px' }}>
-            <Button
-              className="Button Button--primary"
-              icon="fas fa-plus"
-              onclick={() => this.addAd()}
-            >
-              {app.translator.trans('wusong8899-tag-tiles.admin.AddAd')}
-            </Button>
-          </div>
-
           {/* Global ads toggle */}
-          <div className="Form-group" style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #e8e8e8' }}>
+          <div className="Form-group" style={{ marginBottom: '25px', paddingBottom: '20px', borderBottom: '1px solid #e8e8e8' }}>
             <div>
               <label className="checkbox">
                 <input
@@ -222,6 +208,20 @@ export default class DynamicAdSettingsComponent extends Component<DynamicAdSetti
                 {app.translator.trans('wusong8899-tag-tiles.admin.EnableAdsHelp')}
               </div>
             </div>
+          </div>
+
+          {/* Ads list */}
+          {this.ads.map((ad, index) => this.renderAd(ad, index))}
+          
+          {/* Add button */}
+          <div className="DynamicAdSettings-addButton" style={{ marginTop: '15px' }}>
+            <Button
+              className="Button Button--primary"
+              icon="fas fa-plus"
+              onclick={() => this.addAd()}
+            >
+              {app.translator.trans('wusong8899-tag-tiles.admin.AddAd')}
+            </Button>
           </div>
         </div>
       </div>

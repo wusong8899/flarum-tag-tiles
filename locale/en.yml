@@ -42,6 +42,23 @@ wusong8899-tag-tiles:
     AdvancedSplideEnableGrabCursorHelp: Show grab cursor when hovering over slides
     AdvancedSplideEnableFreeMode: Enable Free Mode
     AdvancedSplideEnableFreeModeHelp: Allow free sliding without snapping to slides
+
+    # Advertisement Settings
+    EnableAds: Enable Advertisements
+    EnableAdsHelp: Turn on/off the advertisement slideshow feature
+    AdAutoplayInterval: Advertisement Autoplay Interval (ms)
+    AdAutoplayIntervalHelp: "Time between advertisement transitions in milliseconds (default: 3000)"
+    AdSettings: Advertisement Management
+    AdSettingsHelp: Configure advertisement slides that will be displayed in a slideshow at the top of the tags page
+    AddAd: Add Advertisement
+    DeleteAd: Delete
+    PreviewAd: Preview
+    AdNumber: "Advertisement #{number}"
+    AdImage: Image URL
+    AdLink: Link URL (Optional)
+    AdLinkHelp: URL to redirect to when the advertisement is clicked (optional)
+    InvalidImageUrl: Please enter a valid image URL
+    InvalidLinkUrl: Please enter a valid link URL
   forum:
     loading: Loading...
     error: An error occurred

@@ -209,13 +209,13 @@ export class AdSlideshowManager {
         // Add click handler if link is provided
         if (ad.link) {
             img.style.cursor = 'pointer';
-            img.onclick = () => {
+            img.addEventListener('click', () => {
                 try {
                     window.open(ad.link, '_blank');
                 } catch {
                     // Silently handle link opening errors
                 }
-            };
+            });
         }
 
         DOMUtils.appendChild(inner, img);
